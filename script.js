@@ -14,10 +14,14 @@ for (let i = 0; i < 50; i++) {
     
 //   };
 // });
+////////////////////////////////////////////
+let liked_list=[];
+
+////////////////////////////////
 
 localStorage.setItem("link123","https://www.youtube.com/embed/YkVaEuo4Dps")
 let videolink=localStorage.getItem("link123")
-let render_data = (link1,name) => {
+let render_data = (link1,name,id1) => {
   let div1 = document.createElement('div');
   let div2 = document.createElement('div');
    content_div.appendChild(div1)
@@ -40,7 +44,14 @@ let render_data = (link1,name) => {
   //   div2.style.width="120%"
 
   // })
-
+  let like_button=document.createElement("button")
+  div2.appendChild(like_button)
+  like_button.innerText="like";
+  div1.id=id1;
+  like_button.addEventListener('click',(e)=>{
+liked_list.push(div1.id);
+console.log(liked_list)
+  })
   
   
  
@@ -15327,8 +15338,10 @@ data.map((a, i) => {
   try {
     // console.log(fianl_data[i].results[0].image.url)
     render_data(
-      fianl_data[i].results[0].image.url,
-      fianl_data[i].results[0].title
+      fianl_data[1].results[0].image.url,
+      fianl_data[i].results[0].title,
+      ""+i
+
     );
   }
   catch(err) {
